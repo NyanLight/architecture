@@ -4,7 +4,7 @@ import { Outlet } from "react-router";
 export const App = () => {
     return (
         <>  
-            <div>shop app btw</div>
+            <div>I'm a shop</div>
             <Outlet />  
         </>
     )

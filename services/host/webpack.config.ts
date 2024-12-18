@@ -41,7 +41,6 @@ export default (env: EnvVariables) => {
     new webpack.container.ModuleFederationPlugin({
       name: "host",
       filename: "remoteEntry.js",
-
       remotes: {
         shop: `shop@${SHOP_REMOTE_URL}/remoteEntry.js`,
         admin: `admin@${ADMIN_REMOTE_URL}/remoteEntry.js`,
@@ -49,9 +48,6 @@ export default (env: EnvVariables) => {
       shared: {
         ...packageJson.dependencies,
         react: {
-          eager: true,
-        },
-        "react-router-dom": {
           eager: true,
         },
         "react-dom": {

@@ -1,14 +1,14 @@
-import HomePage from "@/pages/HomePage";
 import { createBrowserRouter } from "react-router";
 //@ts-ignore
 import shopRoutes from "shop/Router";
 //@ts-ignore
 import adminRoutes from "admin/Router";
+import { App } from "@/components/App";
 
 export const router = createBrowserRouter([
     {
       path: '/',
-      element: <HomePage />,
+      element: <App />,
       children: [
         ...shopRoutes,
         ...adminRoutes,

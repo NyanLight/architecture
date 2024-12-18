@@ -4,7 +4,7 @@ import { Outlet } from "react-router";
 export const App = () => {
     return (
         <>
-            <div>admin app btw</div>
+            <div>i'm an admin panel</div>
             <Outlet />  
         </>
     )

@@ -1,4 +1,3 @@
-import { Link } from "react-router";
 
 function Hi () {
   return (
@@ -6,12 +5,10 @@ function Hi () {
   )
 }
 
-export default function HomePage() {
+export default function HomePage({}) {
   return (
     <>
       <Hi />
-      <Link to='/shop'>Shop!</Link>
-      <Link to='/admin'>Admin!  </Link>
     </>
   );
 }
