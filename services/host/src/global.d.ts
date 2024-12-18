@@ -1,5 +1,4 @@
-import { an } from "react-router/dist/development/route-data-DuV3tXo2";
-
+    
 declare module '*.png';
 declare module '*.jpg';
 declare module '*.jpeg';

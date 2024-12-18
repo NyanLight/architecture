@@ -30,7 +30,7 @@ export default (env: EnvVariables) => {
   const ADMIN_REMOTE_URL = env.ADMIN_REMOTE_URL ?? "http://localhost:3002";
 
   const config: webpack.Configuration = buildWebpack({
-    port: env.port ?? 3000,
+    port: env.port ?? 3001,
     mode: env.mode ?? "development",
     paths,
     analyzer: env.analyzer,
@@ -39,12 +39,10 @@ export default (env: EnvVariables) => {
 
   config.plugins.push(
     new webpack.container.ModuleFederationPlugin({
-      name: "host",
+      name: "shop",
       filename: "remoteEntry.js",
-
-      remotes: {
-        shop: `shop@${SHOP_REMOTE_URL}/remoteEntry.js`,
-        admin: `admin@${ADMIN_REMOTE_URL}/remoteEntry.js`,
+      exposes: {
+        './Router': './src/router/Router.tsx'
       },
       shared: {
         ...packageJson.dependencies,

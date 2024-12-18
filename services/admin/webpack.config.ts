@@ -26,11 +26,9 @@ export default (env: EnvVariables) => {
     public: path.resolve(__dirname, "public"),
     src: path.resolve(__dirname, "src"),
   };
-  const SHOP_REMOTE_URL = env.SHOP_REMOTE_URL ?? "http://localhost:3001";
-  const ADMIN_REMOTE_URL = env.ADMIN_REMOTE_URL ?? "http://localhost:3002";
 
   const config: webpack.Configuration = buildWebpack({
-    port: env.port ?? 3000,
+    port: env.port ?? 3002,
     mode: env.mode ?? "development",
     paths,
     analyzer: env.analyzer,
@@ -39,30 +37,24 @@ export default (env: EnvVariables) => {
 
   config.plugins.push(
     new webpack.container.ModuleFederationPlugin({
-      name: "host",
+      name: "admin",
       filename: "remoteEntry.js",
-
-      remotes: {
-        shop: `shop@${SHOP_REMOTE_URL}/remoteEntry.js`,
-        admin: `admin@${ADMIN_REMOTE_URL}/remoteEntry.js`,
+      exposes: {
+        './Router': './src/router/Router.tsx'
       },
       shared: {
         ...packageJson.dependencies,
         react: {
           eager: true,
-          // requiredVersion: packageJson.dependencies['react'],
         },
         "react-router-dom": {
           eager: true,
-          // requiredVersion: packageJson.dependencies['react-router-dom'],
         },
         "react-dom": {
           eager: true,
-          // requiredVersion: packageJson.dependencies['react-dom'],
         },
         "react-router": {
           eager: true,
-          // requiredVersion: packageJson.dependencies['react-router'],
         }
       },
     })
