@@ -1,8 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router';
-import {  } from '@packages/build_config';
-import { } from '@packages/shared';
 import Admin from './pages/Admin';
 
 const router = createBrowserRouter([
