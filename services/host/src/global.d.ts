@@ -1,10 +1,4 @@
-declare module '*.scss' {
-    interface IClassNames {
-        [className: string]: string;
-    }
-    const classNames: IClassNames;
-    export = classNames;
-}
+import { an } from "react-router/dist/development/route-data-DuV3tXo2";
 
 declare module '*.png';
 declare module '*.jpg';
